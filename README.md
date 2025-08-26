@@ -121,6 +121,36 @@ Syntax is flexible and forgiving: optional whitespace, mixed case, and clean aut
 ---
 
 
+; === Fold and power ===
+.macro FOLD(n)           fold_mode(n)
+.macro GATE(u,op)        power_gate(u,op)
+
+; === BIST ===
+.macro BIST(id)          bist_start(id) ; followed by a poll loop in tape
+
+; === SMT weight ===
+.macro WEIGHT(t,w)       smt_weight(t,w)
+
+; === Mem-move ===
+; args: sCap,dCap,size,srcStr,dstStr,flags,mask
+.macro MME(s,d,sz,ss,ds,fl,msk)
+  mme(s,d,sz,ss,ds,fl,msk)
+.endm
+
+; === Patch ===
+.macro PATCH_BEGIN(bank,flags)  patch_bank(bank,flags)
+.macro PATCH_COMMIT(crc)        patch_commit(crc)
+
+; === Perf ===
+.macro PMC(op,evt,slot)         perf_sample(op,evt,slot)
+
+; === Link ===
+.macro LINKCFG(ch,mode,flags)   link_config(ch,mode,flags)
+
+
+---
+
+
 Labels & Control Flow
 
 
