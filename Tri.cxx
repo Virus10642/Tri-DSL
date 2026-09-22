@@ -291,7 +291,7 @@ static void pass1(void) {
 static void asm_passA(void) {
     for (int i = 0; i < al; ++i) {
         if (ln2 >= MAXL) dieAsm(i, "lines2 overflow");
-        lines2[ln2] = malloc(LNSZ);
+        lines2[ln2] = static_cast<char *>(malloc(LNSZ));
         if (!lines2[ln2]) dieAsm(i, "out of memory");
         strcpy(lines2[ln2], asm1[i]);
         lines2AsmIdx[ln2++] = i;
